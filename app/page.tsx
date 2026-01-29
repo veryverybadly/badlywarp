@@ -1,81 +1,50 @@
 "use client"
 
-import Image from "next/image"
 import { useState } from "react"
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert"
 import { Button } from "@/components/ui/button"
-import {
-  Info,
-} from "lucide-react"
-import { RiTelegram2Line, RiGithubLine, RiRobot2Line, RiMoneyDollarCircleLine } from "react-icons/ri";
-import { RxLightningBolt } from "react-icons/rx";
+import { Info } from "lucide-react"
 import { WarpGenerator } from "@/components/warp-generator"
 import { Badge } from "@/components/ui/badge"
+import { RiTelegram2Line } from "react-icons/ri"
 
 export default function Home() {
-  const [showNewFormatsAlert, setShowNewFormatsAlert] = useState(false);
+  const [showNewFormatsAlert, setShowNewFormatsAlert] = useState(false)
 
   return (
-    <>
-      <main className="flex min-h-screen flex-col items-center justify-center p-4 w-full">
-        {/* Уведомление о новых форматах */}
-        {showNewFormatsAlert && (
-          <Alert className="alert mb-6 break-words">
-            <AlertTitle className="flex items-center gap-2">
-              <Info className="w-5 h-5 text-blue-400" />
-              Новые форматы конфигураций
-              <Badge variant="secondary" className="ml-2">Новое</Badge>
-            </AlertTitle>
+    <main className="flex min-h-screen flex-col items-center justify-center p-4 w-full bg-lime-500">
+      {showNewFormatsAlert && (
+        <Alert className="mb-6 break-words bg-lime-100 border-lime-300">
+          <AlertTitle className="flex items-center gap-2 text-lime-900">
+            <Info className="w-5 h-5" />
+            Новые форматы конфигураций
+            <Badge variant="secondary" className="ml-2">Новое</Badge>
+          </AlertTitle>
 
-            <AlertDescription className="break-words mt-3">
-              Добавлена поддержка новых форматов: <strong>Throne</strong>, <strong>Clash</strong>, <strong>NekoRay/Exclave</strong>, <strong>Husi</strong>, <strong>Karing/Hiddify</strong>. 
-              Выберите нужный формат в настройках конфигурации.
-            </AlertDescription>
-            
-            <Button
-              variant="ghost"
-              size="sm"
-              className="mt-2 h-auto p-0 text-xs text-muted-foreground hover:text-foreground"
-              onClick={() => setShowNewFormatsAlert(false)}
-            >
-              Скрыть уведомление
-            </Button>
-          </Alert>
-        )}
-        <div className="flex flex-col items-center justify-center gap-6 w-[300px]">
-          <Image src="/logo.svg" alt="Логотип" width={300} height={300}/>
-          <WarpGenerator/>
-          <Button asChild className="w-full bg-yellow-400 hover:bg-yellow-500 text-black">
-            <a href="https://t.me/findllimonix/63" target="_blank">
-              <RxLightningBolt /> Ультимативный конфиг
-            </a>
+          <AlertDescription className="break-words mt-3 text-lime-800">
+            Добавлена поддержка новых форматов: <strong>Throne</strong>, <strong>Clash</strong>, <strong>NekoRay/Exclave</strong>, <strong>Husi</strong>, <strong>Karing/Hiddify</strong>
+          </AlertDescription>
+
+          <Button
+            variant="ghost"
+            size="sm"
+            className="mt-2 h-auto p-0 text-xs text-lime-700 hover:text-lime-900"
+            onClick={() => setShowNewFormatsAlert(false)}
+          >
+            Скрыть уведомление
           </Button>
-          <Button asChild variant="secondary" className="w-full">
-            <a href="https://t.me/warp_generator_bot" target="_blank">
-              <RiRobot2Line />Warp Generator Bot
-            </a>
-          </Button>
-          <Button asChild variant="secondary" className="w-full">
-            <a href="https://t.me/+fDYczngHDFplZDli" target="_blank">
-              <RiTelegram2Line />Telegram канал
-            </a>
-          </Button>
-          <Button asChild variant="secondary" className="w-full">
-            <a href="https://t.me/tribute/app?startapp=dxSo" target="_blank" rel="noopener noreferrer">
-              <RiMoneyDollarCircleLine />
-              Поддержать проект
-            </a>
-          </Button>
-          <Button asChild variant="secondary" className="w-full">
-            <a href="https://github.com/nellimonix/warp-config-generator-vercel" target="_blank">
-              <RiGithubLine />GitHub репозиторий
-            </a>
-          </Button>
-          <p className="text-sm text-muted-foreground">
-            Пожалуйста, поддержите меня на GitHub, поставив звезду.
-          </p>
-        </div>
-      </main>
-    </>
+        </Alert>
+      )}
+
+      <div className="flex flex-col items-center justify-center gap-6 w-[300px] bg-lime-400 p-6 rounded-2xl shadow-xl">
+        <WarpGenerator />
+
+        <Button asChild variant="secondary" className="w-full">
+          <a href="https://t.me/verybad_lyy" target="_blank">
+            <RiTelegram2Line /> Telegram канал
+          </a>
+        </Button>
+      </div>
+    </main>
   )
 }
